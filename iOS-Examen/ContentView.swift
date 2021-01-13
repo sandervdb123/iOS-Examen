@@ -22,8 +22,7 @@ struct ContentView: View {
                     }
                 }
                 .tag(0)
-            Text("Second View")
-                .font(.title)
+            TabView(selection: $selection)
                 .tabItem {
                     VStack {
                         Image("second")
