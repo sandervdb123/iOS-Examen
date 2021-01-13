@@ -18,7 +18,6 @@
 		9968E06925AE04A70046C9A3 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968E06825AE04A70046C9A3 /* MovieService.swift */; };
 		9968E06C25AE04D50046C9A3 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968E06B25AE04D50046C9A3 /* Movie.swift */; };
 		9968E07925AE0C140046C9A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968E07825AE0C140046C9A3 /* ViewController.swift */; };
-		9968E07B25AE0CAA0046C9A3 /* Questions.json in Resources */ = {isa = PBXBuildFile; fileRef = 9968E07A25AE0CAA0046C9A3 /* Questions.json */; };
 		99B7912125AF5D660093BB20 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B7912025AF5D660093BB20 /* HttpRequest.swift */; };
 		99B7912325AF5F090093BB20 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B7912225AF5F090093BB20 /* APIManager.swift */; };
 		99B7912525AF60E00093BB20 /* TMDBPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B7912425AF60E00093BB20 /* TMDBPage.swift */; };
@@ -62,7 +61,6 @@
 		9968E06825AE04A70046C9A3 /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		9968E06B25AE04D50046C9A3 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		9968E07825AE0C140046C9A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9968E07A25AE0CAA0046C9A3 /* Questions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Questions.json; sourceTree = "<group>"; };
 		99B7912025AF5D660093BB20 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
 		99B7912225AF5F090093BB20 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = "iOS-Examen/Network/APIManager.swift"; sourceTree = SOURCE_ROOT; };
 		99B7912425AF60E00093BB20 /* TMDBPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBPage.swift; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 				9968E04125AE00B00046C9A3 /* LaunchScreen.storyboard */,
 				9968E04425AE00B00046C9A3 /* Info.plist */,
 				9968E03E25AE00B00046C9A3 /* Preview Content */,
-				9968E07A25AE0CAA0046C9A3 /* Questions.json */,
 			);
 			path = "iOS-Examen";
 			sourceTree = "<group>";
@@ -304,7 +301,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9968E04325AE00B00046C9A3 /* LaunchScreen.storyboard in Resources */,
-				9968E07B25AE0CAA0046C9A3 /* Questions.json in Resources */,
 				9968E04025AE00B00046C9A3 /* Preview Assets.xcassets in Resources */,
 				9968E03D25AE00B00046C9A3 /* Assets.xcassets in Resources */,
 			);
