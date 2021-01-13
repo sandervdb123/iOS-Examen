@@ -9,16 +9,18 @@
 import UIKit
 
 class MoviesListVC: UIViewController {
-    var movies = [Movie]() {
-        didSet {
-            tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-        }
+    var movies : [Movie] = []
+        
+    struct Cells {
+        static let movieCell = "MovieTableCell"
     }
     var tableView = UITableView()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.TVregisterClassDefaultIdentifier(cellClass : MovieTableCell.self)
+        fetchData()
         configureTableView()
         setTableViewDelegates()
 
@@ -28,6 +30,7 @@ class MoviesListVC: UIViewController {
         view.addSubview(tableView)
         setTableViewDelegates()
         tableView.rowHeight=100
+        tableView.register(MovieTableCell.self, forCellReuseIdentifier: Cells.movieCell)
     }
     func setTableViewDelegates(){
         tableView.delegate = self
@@ -58,9 +61,9 @@ extension MoviesListVC :  UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: MovieTableCell = tableView.TVdequeueReusableCellDefaultIdentifier()
+        let cell: MovieTableCell = tableView.dequeueReusableCell(withIdentifier: Cells.movieCell) as! MovieTableCell
         let movie = movies[indexPath.row]
-        cell.configureMovieCell(movie)
+        cell.setCell(movie : movie)
         return cell
     }
     

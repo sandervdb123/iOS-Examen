@@ -28,6 +28,7 @@
 		99EBD8F825AFA0D700FEB00F /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EBD8F725AFA0D700FEB00F /* UIImageView.swift */; };
 		99EBD8FA25AFA1D800FEB00F /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EBD8F925AFA1D800FEB00F /* UITableView.swift */; };
 		99EBD8FC25AFA1F900FEB00F /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EBD8FB25AFA1F900FEB00F /* UITableViewCell.swift */; };
+		99EBD8FE25AFABC300FEB00F /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EBD8FD25AFABC300FEB00F /* TestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		99EBD8F725AFA0D700FEB00F /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		99EBD8F925AFA1D800FEB00F /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		99EBD8FB25AFA1F900FEB00F /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
+		99EBD8FD25AFABC300FEB00F /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestViewController.swift; path = "iOS-Examen/Extensions/TestViewController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				99B7914425AF90D20093BB20 /* MoviesListVC.swift */,
+				99EBD8FD25AFABC300FEB00F /* TestViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 			files = (
 				99EBD8FC25AFA1F900FEB00F /* UITableViewCell.swift in Sources */,
 				99B7914925AF947C0093BB20 /* UIViewExt.swift in Sources */,
+				99EBD8FE25AFABC300FEB00F /* TestViewController.swift in Sources */,
 				99EBD8F825AFA0D700FEB00F /* UIImageView.swift in Sources */,
 				9968E06925AE04A70046C9A3 /* MovieService.swift in Sources */,
 				99B7912325AF5F090093BB20 /* APIManager.swift in Sources */,
