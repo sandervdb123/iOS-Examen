@@ -8,16 +8,11 @@
 
 import Foundation
 
-enum APIError: Error {
-    case networkError
-    case parsingError
-}
-
 final class APIManager {
     
     static let shared = APIManager()
     
-    let host = "https://api.themoviedb.org/3"
+    let baseUrl = "https://api.themoviedb.org/3"
     let apiKey = "d2ab0c79bdb7a3a1e56cb929ae3abf11"
     
     private let urlSession: URLSession
@@ -26,8 +21,8 @@ final class APIManager {
         self.urlSession = urlSession
     }
     
-    func execute<Value: Decodable>(_ httpRequest: HttpRequest<Value>, completion: @escaping (Result<Value, APIError>) -> Void) {
-        urlSession.dataTask(with: urlRequest(for: httpRequest)) { responseData, response, error in
+    func fetch<Value: Decodable>(_ httpRequest: HttpRequest<Value>, completion: @escaping (Result<Value, NetworkErrors>) -> Void) {
+        urlSession.dataTask(with: createUrlRequest(for: httpRequest)) { responseData, response, error in
             if let data = responseData {
                 let response: Value
                 do {
@@ -43,8 +38,8 @@ final class APIManager {
         }.resume()
     }
     
-    private func urlRequest<Value>(for httpRequest: HttpRequest<Value>) -> URLRequest {
-        let url = URL(host, apiKey, httpRequest)
+    private func createUrlRequest<Value>(for httpRequest: HttpRequest<Value>) -> URLRequest {
+        let url = URL(baseUrl, apiKey, httpRequest)
         var result = URLRequest(url: url)
         result.httpMethod = httpRequest.method.rawValue
         return result
@@ -75,4 +70,9 @@ extension URL {
         
         self.init(string: url.absoluteString)!
     }
+}
+
+enum NetworkErrors: Error {
+    case networkError
+    case parsingError
 }

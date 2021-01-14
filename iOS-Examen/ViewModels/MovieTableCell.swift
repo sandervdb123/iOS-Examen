@@ -9,62 +9,60 @@
 
 import UIKit
 
-class MovieTableCell: UITableViewCell {
-
-    var covImage = UIImageView()
-    var movLabel = UILabel()
-    
+final class MovieTableCell: UITableViewCell {
+    let covImage = UIImageView()
+    let movTitle = UILabel()
+    let overview = UILabel()
+    let svHead = UIStackView()
+    let sv = UIStackView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureImageView()
-        configureTitleLabel()
-        setcoverImageConstraints()
-        setTitleLabelConstraints()
+        configCell()
+    }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        configCell()
+    }
+    private func configCell() {
+        movTitle.numberOfLines = 3
+        movTitle.textColor = .black
+        movTitle.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        movTitle.textAlignment = .center
         
-        addSubview(movLabel)
-        addSubview(covImage)
+        overview.textColor = .gray
+        overview.numberOfLines = 5
+        covImage.contentMode = .scaleAspectFit
+        
+        svHead.spacing = 5
+        svHead.alignment = .top
+        sv.axis = .vertical
+        sv.spacing = 10
+        svHead.addArrangedSubview(covImage)
+        svHead.addArrangedSubview(movTitle)
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.addArrangedSubview(svHead)
+        sv.addArrangedSubview(overview)
+        contentView.addSubview(sv)
+        setupConstraints()
 
-        
-        
     }
-    func setCell(movie : Movie){
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            sv.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+            sv.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
+            sv.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor, constant: 8),
+            sv.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor, constant: -8),
+            covImage.widthAnchor.constraint(equalToConstant: 180),
+            covImage.heightAnchor.constraint(equalToConstant: 320)
+            ])
+    }
+    func setCell(_ movie: Movie) {
+        movTitle.text = movie.title
+        overview.text = movie.overview
         covImage.setImageCover(poster: movie.posterPath)
-        movLabel.text = movie.title
     }
-    /*func configureMovieCell(_ movie: Movie) {
-        movLabel.text = movie.title
-        covImage.setImageCover(poster: movie.posterPath)
-    }*/
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func prepareForReuse() {
+        super.prepareForReuse()
     }
-    func configureImageView(){
-        covImage.layer.cornerRadius = 8
-        covImage.clipsToBounds = true
-        
-    }
-    func configureTitleLabel(){
-        movLabel.numberOfLines = 1
-        movLabel.adjustsFontSizeToFitWidth = true
-        
-    }
-    func setTitleLabelConstraints() {
-        movLabel.translatesAutoresizingMaskIntoConstraints = false
-        movLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        movLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant : 12).isActive = true
-        movLabel.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        movLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant : -10).isActive = true
-    }
-    func setcoverImageConstraints() {
-        covImage.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        covImage.leadingAnchor.constraint(equalTo: covImage.trailingAnchor,constant : 20).isActive = true
-        covImage.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        covImage.widthAnchor.constraint(equalTo: covImage.heightAnchor, multiplier: 16/9).isActive = true
-    }
-    
-    
-
-    
 }
