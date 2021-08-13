@@ -20,10 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         vc.title = "Popular Movies"
         
         
+        
         let nav = UINavigationController(rootViewController: vc)
         nav.navigationBar.prefersLargeTitles = true
         
-        window.rootViewController = nav
+        //window.rootViewController = nav
+        window.rootViewController = TabBarViewController()
         self.window = window
         window.makeKeyAndVisible()
     }
