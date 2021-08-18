@@ -8,17 +8,17 @@
 
 import UIKit
 
-class TabBarViewController: UITabBarController{
+class TabBarVC: UITabBarController{
     override func viewDidLoad() {
         super.viewDidLoad()
     
     
     let vc1 = MoviesListVC()
-    let vc2 = MoviesListVC()
+    let vc2 = SearchVC()
         
         
         vc1.title = "Movies"
-        vc2.title = "tsting"
+        
         
         vc1.navigationItem.largeTitleDisplayMode = .always
         vc2.navigationItem.largeTitleDisplayMode = .always
@@ -28,6 +28,13 @@ class TabBarViewController: UITabBarController{
         
         nav1.navigationBar.prefersLargeTitles = true
         nav2.navigationBar.prefersLargeTitles = true
+        
+        nav1.navigationBar.tintColor = .label
+        nav2.navigationBar.tintColor = .label
+
+        nav1.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 1)
+        nav2.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 1)
+
         
         setViewControllers([nav1,nav2], animated: false)
         
