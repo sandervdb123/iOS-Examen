@@ -25,17 +25,23 @@ final class MovieTableCell: UITableViewCell {
         configCell()
     }
     private func configCell() {
+        
         movTitle.numberOfLines = 3
-        movTitle.textColor = .black
+        movTitle.textColor = .white
         movTitle.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         movTitle.textAlignment = .center
         
+        
+        
+        
         overview.textColor = .gray
-        overview.numberOfLines = 5
+        overview.numberOfLines = 2
         covImage.contentMode = .scaleAspectFit
+        covImage.layer.masksToBounds = true
+        covImage.layer.cornerRadius = 50
         
         svHead.spacing = 5
-        svHead.alignment = .top
+        svHead.alignment = .center
         sv.axis = .vertical
         sv.spacing = 10
         svHead.addArrangedSubview(covImage)
@@ -44,11 +50,13 @@ final class MovieTableCell: UITableViewCell {
         sv.addArrangedSubview(svHead)
         sv.addArrangedSubview(overview)
         contentView.addSubview(sv)
+        contentView.backgroundColor = .black
         setupConstraints()
 
     }
     func setupConstraints() {
         NSLayoutConstraint.activate([
+           
             sv.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
             sv.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
             sv.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor, constant: 8),

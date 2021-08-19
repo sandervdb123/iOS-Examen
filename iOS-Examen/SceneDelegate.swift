@@ -16,14 +16,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = scene as? UIWindowScene else { return }
         let window = UIWindow(windowScene: windowScene)
         
-        let vc = MoviesListVC()
-        vc.title = "Popular Movies"
-        
-        
-        
-        let nav = UINavigationController(rootViewController: vc)
-        nav.navigationBar.prefersLargeTitles = true
-        
         //window.rootViewController = nav
         window.rootViewController = TabBarVC()
         self.window = window

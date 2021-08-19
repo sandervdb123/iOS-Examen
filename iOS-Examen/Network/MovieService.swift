@@ -19,7 +19,6 @@ class MovieService {
     func getMovieDetails(for movie: Movie) -> HttpRequest<MovieDetail> {
         return HttpRequest(method: .get, path: "/movie/\(movie.id)", pars: [:])
     }
-    
 }
 enum MovieListCategory: String, CaseIterable, Identifiable {
     
