@@ -13,9 +13,9 @@ class MovieService {
     func getMoviesFromCategory(from category: MovieListCategory) -> HttpRequest<TMDBPage<Movie>> {
         return HttpRequest(method: .get, path: "/movie/\(category.rawValue)", pars: [:])
     }
-    //func getRelatedMovies(for movie: Movie) -> HttpRequest<MovieListCategory> {
-    //    return HttpRequest(method: .get, path: "/movie/\(movie.id)/similar", pars: [:])
-    //}
+    func getRelatedMovies(for movie: Movie) -> HttpRequest<RelatedMovieList> {
+        return HttpRequest(method: .get, path: "/movie/\(movie.id)/similar", pars: [:])
+    }
     func getMovieDetails(for movie: Movie) -> HttpRequest<MovieDetail> {
         return HttpRequest(method: .get, path: "/movie/\(movie.id)", pars: [:])
     }
