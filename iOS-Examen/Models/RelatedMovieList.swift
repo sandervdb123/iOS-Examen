@@ -10,10 +10,10 @@ import Foundation
 
 struct RelatedMovieList: Decodable {
     
-    let movieRes: [Movie]
+    let results: [Movie]
 
     enum CodingKeys: String, CodingKey {
-        case movieRes
+        case results
     }
 }
 

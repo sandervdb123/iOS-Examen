@@ -19,12 +19,17 @@ final class MoviesListVC: UITableViewController {
         tableView.TVregisterClassDefaultIdentifier(cellClass : MovieTableCell.self)
         tableView.rowHeight = UITableView.automaticDimension
         configureTableView()
+     
         fetchData()
         
         //setTableViewDelegates()
        
     }
+    
+    
+    
     func configureTableView()  {
+        
         
         tableView.layer.cornerRadius = 5
     }
@@ -64,8 +69,9 @@ extension MoviesListVC {
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //let movie = movies[indexPath.row]
-        //.pushViewController(MovieDetailVC())
+        let movie = movieList[indexPath.row]
+        let viewController = MovieDetailVC(movie: movie)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     

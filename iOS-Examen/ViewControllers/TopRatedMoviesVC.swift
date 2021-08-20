@@ -66,7 +66,7 @@ extension TopRatedMovies {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let movie = movieList[indexPath.row]
-        let viewController = MovieDetailsViewController(movie: movie)
+        let viewController = MovieDetailVC(movie: movie)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
