@@ -14,7 +14,7 @@ class TabBarVC: UITabBarController{
         
     
         let vc1 = MoviesListVC()
-        let vc2 = SearchVC()
+        let vc2 = SearchResUpdating()
         let vc3 = TopRatedMovies()
     
         

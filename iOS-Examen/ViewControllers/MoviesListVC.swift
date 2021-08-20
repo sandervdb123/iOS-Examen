@@ -19,10 +19,7 @@ final class MoviesListVC: UITableViewController {
         tableView.TVregisterClassDefaultIdentifier(cellClass : MovieTableCell.self)
         tableView.rowHeight = UITableView.automaticDimension
         configureTableView()
-     
         fetchData()
-        
-        //setTableViewDelegates()
        
     }
     

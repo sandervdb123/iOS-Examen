@@ -8,60 +8,64 @@
 
 import UIKit
 
-class SearchVC: UIViewController,UITableViewDataSource {
-
+class SearchResVC: UITableViewController {
     
-
-        let tableView: UITableView = {
-            let table = UITableView()
-            table.register(UITableViewCell.self,
-                           forCellReuseIdentifier: "cell")
-            return table
-        }()
-
-        var models: [String] = Array(0...100).compactMap({ "\($0) item" })
-
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            view.addSubview(tableView)
-            tableView.dataSource = self
-            tableView.frame = view.bounds
-        }
-
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return models.count
-        }
-
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
-                                                     for: indexPath)
-            cell.textLabel?.text = models[indexPath.row]
-            return cell
+    var movieList = [Movie]() {
+        didSet {
+            tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
         }
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.TVregisterClassDefaultIdentifier(cellClass: MovieTableCell.self)
+        tableView.rowHeight = UITableView.automaticDimension
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(textSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
+    }
+    
+    @objc func textSizeChanged() {
+        tableView.reloadData()
+    }
+}
 
-    class ViewController: UIViewController, UISearchResultsUpdating {
+extension SearchResVC {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return movieList.count
+    }
 
-        let searchController = UISearchController(searchResultsController: SearchVC())
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: MovieTableCell = tableView.dequeueReusableCell(withIdentifier: MovieTableCell.tvc_defaultIdentifier) as! MovieTableCell
+        let movie = movieList[indexPath.row]
+        cell.setCell(movie)
+        return cell
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let movie = movieList[indexPath.row]
+        let viewController = MovieDetailVC(movie: movie)
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+    class SearchResUpdating: UITableViewController, UISearchResultsUpdating {
+
+        let searchResController = UISearchController(searchResultsController: SearchResVC())
 
         override func viewDidLoad() {
             super.viewDidLoad()
-            title = "Search"
-            searchController.searchResultsUpdater = self
-            navigationItem.searchController = searchController
+            searchResController.searchResultsUpdater = self
+            navigationItem.searchController = searchResController
         }
 
-        func updateSearchResults(for searchController: UISearchController) {
-            guard let text = searchController.searchBar.text else {
-                return
-            }
-            let vc = searchController.searchResultsController as? SearchVC
-            guard !text.isEmpty else {
-                vc?.tableView.isHidden = true
-                return
-            }
-            vc?.tableView.isHidden = false
-            print(text)
+        func updateSearchResults(for sResController: UISearchController) {
+            let request = HttpRequest<TMDBPage<Movie>>(method: Method.get, path: "/search/movie", pars: ["query": sResController.searchBar.text!])
+            APIManager.shared.fetch(request, completion: { result in
+                if case .success(let page) = result {
+                    DispatchQueue.main.async {
+                        (sResController.searchResultsController as! SearchResVC).movieList = page.results
+                    }
+                }
+            })
         }
     }
 

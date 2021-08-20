@@ -74,9 +74,9 @@ final class MovieDetailVC: UIViewController {
         APIManager.shared.fetch(MovieService.shared.getRelatedMovies(for: movie)) { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(let similarMovies):
+            case .success(let relatedMovies):
                 DispatchQueue.main.async {
-                    self.relatedMovies = similarMovies
+                    self.relatedMovies = relatedMovies
                     self.UIcollView.reloadData()
                 }
             case .failure:
