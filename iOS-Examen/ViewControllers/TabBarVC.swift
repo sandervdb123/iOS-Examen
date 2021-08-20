@@ -11,7 +11,7 @@ import UIKit
 class TabBarVC: UITabBarController{
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
     
         let vc1 = MoviesListVC()
         let vc2 = SearchVC()
@@ -19,14 +19,15 @@ class TabBarVC: UITabBarController{
     
         
         
-        vc1.title = "     Popular Movies"
-        vc3.title = "    Top Rated Movies"
+        vc1.title = "Popular Movies"
+        vc3.title = "Top Rated Movies"
+        vc2.title = "Search Movies"
         
         
         
-        vc1.navigationItem.largeTitleDisplayMode = .always
-        vc3.navigationItem.largeTitleDisplayMode = .always
-        vc2.navigationItem.largeTitleDisplayMode = .always
+        vc1.navigationItem.largeTitleDisplayMode = .never
+        vc3.navigationItem.largeTitleDisplayMode = .never
+        vc2.navigationItem.largeTitleDisplayMode = .never
         
         
         
@@ -34,9 +35,9 @@ class TabBarVC: UITabBarController{
         let nav3 = UINavigationController(rootViewController: vc3)
         let nav1 = UINavigationController(rootViewController: vc1)
         
-        nav1.navigationBar.prefersLargeTitles = true
-        nav3.navigationBar.prefersLargeTitles = true
-        nav2.navigationBar.prefersLargeTitles = true
+        nav1.navigationBar.prefersLargeTitles = false
+        nav3.navigationBar.prefersLargeTitles = false
+        nav2.navigationBar.prefersLargeTitles = false
         
         nav1.navigationBar.tintColor = .label
         nav3.navigationBar.tintColor = .label
