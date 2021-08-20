@@ -42,11 +42,11 @@ final class MovieDetailView: UIView {
         
         relatedmovies.font = UIFont.preferredFont(forTextStyle: .title3)
         relatedmovies.textColor = .white
-        relatedmovies.numberOfLines = 0
+        relatedmovies.numberOfLines = 1
         
         overview.font = UIFont.preferredFont(forTextStyle: .body)
         overview.textColor = .white
-        overview.numberOfLines = 0
+        overview.numberOfLines = 6
         
         sv.axis = .vertical
         sv.spacing = 50

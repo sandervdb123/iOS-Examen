@@ -32,7 +32,7 @@ final class MovieTableCell: UITableViewCell {
         movTitle.textAlignment = .center
         
         
-        overview.textColor = .gray
+        overview.textColor = .white
         overview.numberOfLines = 2
         covImage.contentMode = .scaleAspectFit
         covImage.layer.masksToBounds = true
